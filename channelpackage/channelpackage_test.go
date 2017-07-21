@@ -73,11 +73,6 @@ func TestSendTags_GetResponsesOnChannel(t *testing.T) {
 	resultChannel := make(chan TagResult) // buffer size 2, set it or not
 	requestsSent := processTagChannel(requestsChannel)
 
-	tag3 := &Tag{Key: "three", Value: 3}
-	requestsChannel <- tag3
-
-	requestsSent = processTagChannel(requestsChannel)
-
 	fmt.Println("start awaiting results")
 	awaitResults(requestsSent, resultChannel)
 	fmt.Println("done  awaiting results")
